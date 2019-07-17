@@ -6,6 +6,7 @@ Globals:
     Timeout: 3
     Handler: app.lambdaHandler
     Runtime: nodejs8.10
+    Tracing: Active
     Layers:
       - !FindInMap [RegionMap, !Ref "AWS::Region", layer]
       
