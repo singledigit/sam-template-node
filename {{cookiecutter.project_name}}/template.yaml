@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: {{cookiecutter.project_name.lower().replace(' ', '-')}} serverless application
+Globals:
+  Function:
+    Timeout: 3
+    Handler: app.lambdaHandler
+    Runtime: nodejs8.10
+    Tracing: Active
+    Layers:
+      - !FindInMap [RegionMap, !Ref "AWS::Region", layer]
+      
+Mappings: 
+  RegionMap: 
+    us-east-1:
+        layer: arn:aws:lambda:us-east-1:700336187521:layer:aws-sdk:5
+    us-west-2:
+        layer: arn:aws:lambda:us-west-2:700336187521:layer:aws-sdk:5
+    eu-central-1:
+        layer: arn:aws:lambda:eu-central-1:700336187521:layer:aws-sdk:1
+
+Resources:
+  ServiceFunction:
+    Type: AWS::Serverless::Function
+      CodeUri: service/
+      Events:
+        Service:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+            
+
+Outputs:
+  ServiceApi:
+    Description: "API Gateway endpoint URL for Prod stage for service function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
