@@ -17,3 +17,11 @@ This is a simple starting point for SAM serverless applications for NodeJS 8.10
 ## Included Layers
 - AWS-SDK
 - AWS-XRAY-SDK
+
+*Layers work in us-east-1, us-west-2, and eu-central-1*
+
+## Instructions
+To use in AWS SAM CLI
+```bash
+sam init -l gh:aws-samples/cookiecutter-aws-sam-pipeline
+```
