@@ -22,6 +22,7 @@ Mappings:
 Resources:
   ServiceFunction:
     Type: AWS::Serverless::Function
+    Properties:
       CodeUri: service/
       Events:
         Service:
