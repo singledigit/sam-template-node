@@ -23,5 +23,5 @@ This is a simple starting point for SAM serverless applications for NodeJS 8.10
 ## Instructions
 To use in AWS SAM CLI
 ```bash
-sam init -l gh:aws-samples/cookiecutter-aws-sam-pipeline
+sam init -l gh:singledigit/sam-template-node
 ```
